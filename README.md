@@ -1,2 +1,2 @@
 # project0x01
-A mathematics mobile application.
+A mobile application that helps high school students learn math olympiad concepts and problems. 
