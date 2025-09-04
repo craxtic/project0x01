@@ -1,12 +1,14 @@
 No beautiful/cool ui design is needeed, just make the application works first.
 
 ## Tasks #1
-- [ ] setup project. data, domain, presentation directory. an extra 'core' for utils, configs, etc.
-- [ ] read/write from/to local storage, use SharedPreferences.
-- [ ] implement function for settings system, hasSeenWelcome(), seenWelcome(), 
+- [x] setup project. data, domain, presentation directory. an extra 'core' for utils, configs, etc.
+- [x] read/write from/to local storage, use SharedPreferences.
+- [x] implement function for settings system, hasSeenWelcome(), seenWelcome(), 
 set and get functions for theme, fontsize and language. 
-- [ ] create a Dictionary to store words in both khmer and english language, implement a proper structure
-- [ ] create a theme extension for custom colors to design the ui.
+- [x] create a Dictionary to store words in both khmer and english language, implement a proper structure
+- [ ] create a theme extension for custom colors to design the ui. 
+- [ ] prepare a color palette for the app, simple first, no fancy is needed.
+
 
 
 ## Tasks #2, welcome page
