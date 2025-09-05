@@ -12,15 +12,16 @@ set and get functions for theme, fontsize and language.
 
 
 ## Tasks #2, welcome page
-- [ ] create a welcome page, three buttons. two for toggling theme and language, another one is for 'continue' button.
-- [ ] the theme and language button should trigger the app to rebuild, in order to make changes instantly.
-- [ ] continue button will display a second page, next Task.
+- [x] create a welcome page, three buttons. two for toggling theme and language, another one is for 'continue' button.
+- [x] the theme and language button should trigger the app to rebuild, in order to make changes instantly. (loading new theme or language instantly)
+- [x] continue button will display a second page, next Task.
+there should title
 
 ## Task #3, favorite topics page
 this page is shown after the 'continue' is clicked.
 - [ ] the theme and language buttons still remains the same.
 - [ ] create a list of selectable topics (buttons maybe).
-- [ ] any selected topics, will be written to the config file.
+- [ ] any selected topics, will be written to the config file. (ToggleButton)
 - [ ] create two buttons,'back' (takes to the welcome page) and 'get started' (takes to the main app).
 
 ## Task #4, 

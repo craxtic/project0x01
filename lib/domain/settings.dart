@@ -4,8 +4,9 @@ import 'package:project0x01/core/dictionary.dart';
 
 class Settings {
   final LocalStorage _storage;
+  final VoidCallback rebuild;
 
-  Settings(this._storage);
+  Settings(this._storage, this.rebuild);
 
   // no user access
   bool hasSeenWelcome() {
@@ -24,6 +25,7 @@ class Settings {
 
   Future<void> setThemeMode(ThemeMode mode) async {
     await _storage.setInt("theme", mode.index);
+    rebuild();
   }
 
   //fontsize
@@ -35,7 +37,7 @@ class Settings {
     await _storage.setInt("fontSize", size);
   }
 
-  //languag
+  //language
 
   Language getLanguage() {
     int index = _storage.getInt("language");
@@ -44,5 +46,6 @@ class Settings {
 
   Future<void> setLanguage(Language language) async {
     await _storage.setInt("language", language.index);
+    rebuild();
   }
 }
