@@ -19,15 +19,20 @@ there should title
 
 ## Task #3, favorite topics page
 this page is shown after the 'continue' is clicked.
-- [ ] the theme and language buttons still remains the same.
-- [ ] create a list of selectable topics (buttons maybe).
-- [ ] any selected topics, will be written to the config file. (ToggleButton)
-- [ ] create two buttons,'back' (takes to the welcome page) and 'get started' (takes to the main app).
+- [x] the theme and language buttons still remains the same.
+- [x] create a list of selectable topics (buttons maybe).
+- [x] any selected topics, will be written to the config file.
+- [x] create two buttons,'back' (takes to the welcome page) and 'get started' (takes to the main app).  
 
 ## Task #4, 
-- [ ] handle first run, the welcome and favorite topics page will only be 
+- [x] handle first run, the welcome and favorite topics page will only be 
 shown once for new users. use the config to track this. 
-- [ ] automatically initialize default settings. use system thememode, and khmer langauge as default.
+- [x] automatically initialize default settings. use system thememode, and khmer langauge as default.
 
   
 # New tasks will be issued later.
+
+## Task #5
+fix: the thememode toggle button does not work on the first click
+## Task #6
+## Task #7

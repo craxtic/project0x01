@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:project0x01/data/local_storage.dart';
 import 'package:project0x01/core/dictionary.dart';
+import 'package:project0x01/core/configs.dart';
 
 class Settings {
   final LocalStorage _storage;
   final VoidCallback rebuild;
 
-  Settings(this._storage, this.rebuild);
+  Settings(this._storage, this.rebuild) {
+    if (hasSeenWelcome()) return;
+
+    // initialize default settings on first run
+    _storage.setInt("theme", DefaultSettings.themeMode.index);
+    _storage.setInt("fontSize", DefaultSettings.fontSize.index);
+    _storage.setInt("language", DefaultSettings.language.index);
+    setFavoriteTopicList(DefaultSettings.favoriteTopicList);
+  }
 
   // no user access
   bool hasSeenWelcome() {
@@ -15,6 +24,7 @@ class Settings {
 
   Future<void> seenWelcome() async {
     _storage.setBool("seenWelcome", true);
+    rebuild();
   }
 
   // theme mode
@@ -28,17 +38,28 @@ class Settings {
     rebuild();
   }
 
-  //fontsize
-  int getFontSize() {
-    return _storage.getInt("fontSize");
+  //fontsize,
+  // FontSize getFontSize() {
+  //   int actualSize = _storage.getInt("fontSize");
+  //   int index = (actualSize / 2 - 12) as int;
+  //   return FontSize.values[index];
+  // }
+
+  // Future<void> setFontSize(FontSize fontSize) async {
+  //   int actualSize = 2 * fontSize.index + 12;
+  //   await _storage.setInt("fontSize", actualSize);
+  // }, might need this in the future
+
+  FontSize getFonSize() {
+    int index = _storage.getInt("fontSize");
+    return FontSize.values[index];
   }
 
-  Future<void> setFontSize(int size) async {
-    await _storage.setInt("fontSize", size);
+  Future<void> setFontSize(FontSize fontSize) async {
+    await _storage.setInt("fontSize", fontSize.index);
   }
 
   //language
-
   Language getLanguage() {
     int index = _storage.getInt("language");
     return Language.values[index];
@@ -47,5 +68,24 @@ class Settings {
   Future<void> setLanguage(Language language) async {
     await _storage.setInt("language", language.index);
     rebuild();
+  }
+
+  // favorite topics
+  List<Topics> getFavoriteTopicList() {
+    List<String> stringList = _storage.getStrigList("favoriteTopicList");
+    List<Topics> topicList = [];
+    for (String str in stringList) {
+      int index = int.parse(str);
+      topicList.add(Topics.values[index]);
+    }
+    return topicList;
+  }
+
+  Future<void> setFavoriteTopicList(List<Topics> topicList) async {
+    List<String> stringList = [];
+    for (Topics topic in topicList) {
+      stringList.add(topic.index.toString());
+    }
+    await _storage.setStringList("favoriteTopicList", stringList);
   }
 }

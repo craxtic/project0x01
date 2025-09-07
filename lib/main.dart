@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project0x01/core/theme.dart';
 import 'package:project0x01/data/local_storage.dart';
 import 'package:project0x01/domain/settings.dart';
+import 'package:project0x01/presentation/favorite_topics_page.dart';
 import 'package:project0x01/presentation/welcome_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -44,7 +45,7 @@ class _MainAppState extends State<MainApp> {
       darkTheme: AppThemes.dark,
       themeMode: _settings.getThemeMode(),
       home: _settings.hasSeenWelcome()
-          ? Placeholder() // main page
+          ? Center(child: Text("main")) // main page
           : WelcomePageController(settings: _settings),
     );
   }
@@ -65,6 +66,7 @@ class _WelcomePageControllerState extends State<WelcomePageController> {
   _Page currentPage = _Page.welcome;
 
   void nextPage() => setState(() => currentPage = _Page.favoriteTopics);
+  void previousPage() => setState(() => currentPage = _Page.welcome);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,10 @@ class _WelcomePageControllerState extends State<WelcomePageController> {
       duration: Duration(milliseconds: 2),
       child: currentPage == _Page.welcome
           ? WelcomePage(nextPage: nextPage, settings: widget.settings)
-          : Scaffold(body: Center(child: Text("favorite topics page"))),
+          : FavoriteTopicsPage(
+              previousPage: previousPage,
+              settings: widget.settings,
+            ),
     );
   }
 }
