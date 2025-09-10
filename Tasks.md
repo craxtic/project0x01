@@ -37,9 +37,9 @@ shown once for new users. use the config to track this.
 
      
 ## Task #6
-- [ ] switch from SharedPreferences to Hive (a better one)
+- [x] switch from SharedPreferences to Hive (a better one)
 
 
 
-## upcoming tasks
-- [ ] get system theme mode and use it as default thememode, must set directly to light or dark 
+## tasks #6
+- [x] get system theme mode and use it as default thememode, must set directly to light or dark 

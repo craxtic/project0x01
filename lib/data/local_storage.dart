@@ -1,52 +1,51 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 
 // will switch to Hive anyway, no need to refactor
 
+enum StorageType { settings, favoriteTopics }
+
 class LocalStorage {
-  final SharedPreferences _preferences;
+  final List<Box> _boxes = [];
 
-  LocalStorage(this._preferences);
-
-  /* read from local storage */
-  bool getBool(String key) {
-    return _preferences.getBool(key) ?? false;
+  Future<void> initialize() async {
+    await Hive.initFlutter();
+    for(StorageType type in StorageType.values) {
+      await Hive.openBox(type.name);
+      _boxes.add(Hive.box(type.name));
+      // print(_boxes[type.index].path);
+    }
   }
 
-  int getInt(String key) {
-    return _preferences.getInt(key) ?? -1;
+  bool containsKey(StorageType boxType, dynamic key) {
+    return _boxes[boxType.index].containsKey(key);
   }
 
-  double getDouble(String key) {
-    return _preferences.getDouble(key) ?? -1;
+  dynamic get(StorageType boxType, dynamic key) {
+    return _boxes[boxType.index].get(key);
   }
 
-  String getString(String key) {
-    return _preferences.getString(key) ?? "";
+  Future<void> set(StorageType boxType, dynamic key, dynamic value) async {
+    await _boxes[boxType.index].put(key, value);
   }
 
-  List<String> getStrigList(String key) {
-    return _preferences.getStringList(key) ?? [];
+  Future<void> setAll(
+    StorageType boxType,
+    Map<dynamic, dynamic> entries,
+  ) async {
+    await _boxes[boxType.index].putAll(entries);
   }
 
-  /* write to local storage */
-
-  Future<void> setBool(String key, bool value) async {
-    await _preferences.setBool(key, value);
+  Future<void> delete(StorageType boxType, dynamic key) async {
+    await _boxes[boxType.index].delete(key);
   }
 
-  Future<void> setInt(String key, int value) async {
-    await _preferences.setInt(key, value);
+  /******/
+  Future<int> add(StorageType boxType, dynamic value) async {
+    return await _boxes[boxType.index].add(value);
   }
 
-  Future<void> setDouble(String key, double value) async {
-    await _preferences.setDouble(key, value);
-  }
-
-  Future<void> setString(String key, String value) async {
-    await _preferences.setString(key, value);
-  }
-
-  Future<void> setStringList(String key, List<String> value) async {
-    await _preferences.setStringList(key, value);
+  dynamic getAt(StorageType boxType, int index) {
+    return _boxes[boxType.index].getAt(index);
   }
 }
