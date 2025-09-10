@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 
 abstract final class AppThemes {
   static final ThemeData light = ThemeData(
+    fontFamily: 'Poppins',
     brightness: Brightness.light,
     scaffoldBackgroundColor: Colors.white,
     extensions: [],
   );
   static final ThemeData dark = ThemeData(
+    fontFamily: 'Poppins',
     brightness: Brightness.dark,
     scaffoldBackgroundColor: Colors.black87,
     extensions: [],
   );
 }
 
-// TODO: implement this,
+// TODO: implement this
 
 class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
   @override

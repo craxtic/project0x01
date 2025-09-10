@@ -1,5 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+// will switch to Hive anyway, no need to refactor
+
 class LocalStorage {
   final SharedPreferences _preferences;
 

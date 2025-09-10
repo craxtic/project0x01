@@ -30,9 +30,16 @@ shown once for new users. use the config to track this.
 - [x] automatically initialize default settings. use system thememode, and khmer langauge as default.
 
   
-# New tasks will be issued later.
-
 ## Task #5
-fix: the thememode toggle button does not work on the first click
+- [x] fix: the thememode toggle button does not work on the first click
+- [ ] add custom font family, style and size (next time)
+- [x] refactor the code, make changes 
+
+     
 ## Task #6
-## Task #7
+- [ ] switch from SharedPreferences to Hive (a better one)
+
+
+
+## upcoming tasks
+- [ ] get system theme mode and use it as default thememode, must set directly to light or dark 

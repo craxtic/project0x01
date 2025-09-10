@@ -2,7 +2,6 @@ import 'package:project0x01/core/configs.dart';
 
 enum Language { khmer, english }
 
-// usage example: Dictoinary.welcomePage[setting.getLanguage()]["title"];
 
 abstract final class Dictionary {
   static const Map<Language, Map<String, String>> welcomePage = {

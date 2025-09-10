@@ -8,9 +8,10 @@ class Settings {
   final VoidCallback rebuild;
 
   Settings(this._storage, this.rebuild) {
-    if (hasSeenWelcome()) return;
+    if (!hasSeenWelcome()) _initializeDefaultSettings();
+  }
 
-    // initialize default settings on first run
+  void _initializeDefaultSettings() {
     _storage.setInt("theme", DefaultSettings.themeMode.index);
     _storage.setInt("fontSize", DefaultSettings.fontSize.index);
     _storage.setInt("language", DefaultSettings.language.index);
@@ -38,18 +39,7 @@ class Settings {
     rebuild();
   }
 
-  //fontsize,
-  // FontSize getFontSize() {
-  //   int actualSize = _storage.getInt("fontSize");
-  //   int index = (actualSize / 2 - 12) as int;
-  //   return FontSize.values[index];
-  // }
-
-  // Future<void> setFontSize(FontSize fontSize) async {
-  //   int actualSize = 2 * fontSize.index + 12;
-  //   await _storage.setInt("fontSize", actualSize);
-  // }, might need this in the future
-
+  // font size
   FontSize getFonSize() {
     int index = _storage.getInt("fontSize");
     return FontSize.values[index];

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project0x01/core/theme.dart';
 import 'package:project0x01/data/local_storage.dart';
 import 'package:project0x01/domain/settings.dart';
-import 'package:project0x01/presentation/favorite_topics_page.dart';
-import 'package:project0x01/presentation/welcome_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:project0x01/presentation/welcome_page_controller.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
   LocalStorage storage = LocalStorage(preferences);
 
@@ -32,52 +32,22 @@ class _MainAppState extends State<MainApp> {
     _toggleRebuild = false;
   }
 
-  // this trigger to rebuild entire app
+  // this triggers to rebuild entire app
   void rebuild() => setState(() => _toggleRebuild = !_toggleRebuild);
 
   @override
   Widget build(BuildContext context) {
-    print("rebuild");
+    print("MainApp rebuild");
 
     return MaterialApp(
+      title: "project0x01",
       debugShowCheckedModeBanner: false,
       theme: AppThemes.light,
       darkTheme: AppThemes.dark,
       themeMode: _settings.getThemeMode(),
       home: _settings.hasSeenWelcome()
-          ? Center(child: Text("main")) // main page
-          : WelcomePageController(settings: _settings),
-    );
-  }
-}
-
-enum _Page { welcome, favoriteTopics }
-
-class WelcomePageController extends StatefulWidget {
-  final Settings settings;
-
-  const WelcomePageController({required this.settings, super.key});
-
-  @override
-  State<WelcomePageController> createState() => _WelcomePageControllerState();
-}
-
-class _WelcomePageControllerState extends State<WelcomePageController> {
-  _Page currentPage = _Page.welcome;
-
-  void nextPage() => setState(() => currentPage = _Page.favoriteTopics);
-  void previousPage() => setState(() => currentPage = _Page.welcome);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: Duration(milliseconds: 2),
-      child: currentPage == _Page.welcome
-          ? WelcomePage(nextPage: nextPage, settings: widget.settings)
-          : FavoriteTopicsPage(
-              previousPage: previousPage,
-              settings: widget.settings,
-            ),
+        ? Center(child: Text("main")) // main page
+        : WelcomePageController(settings: _settings),
     );
   }
 }

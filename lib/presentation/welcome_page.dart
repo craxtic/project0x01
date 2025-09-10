@@ -21,6 +21,7 @@ class WelcomePage extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
+      // adding style
       leading: _languageToggleButton(),
       actions: [_themeModeToggleButton()],
     );
