@@ -32,7 +32,12 @@ flutter:
           # style: Bold
         # - asset: assets/fonts/Poppins-BoldItalic.ttf        
     # - family: RobotoMono
-      # fonts:
-        # - asset: fonts/RobotoMono-Regular.ttf
+    - family: KhmerOS  
+      fonts: 
+        - asset: assets/fonts/KhmerOSsys.ttf
         # - asset: fonts/RobotoMono-Bold.ttf
         #   weight: 700
+
+    - family: KhmerMuol
+      fonts:
+        - asset: assets/fonts/KhmerOS_muollight.ttf

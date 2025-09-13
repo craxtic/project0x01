@@ -11,10 +11,18 @@ class Settings {
     if (!hasSeenWelcome()) _initializeDefaultSettings();
   }
 
-  void _initializeDefaultSettings() {    
-    _storage.set(StorageType.settings, "theme", DefaultSettings.getSystemThemeMode().index);
-    _storage.set(StorageType.settings, "fontSize", DefaultSettings.fontSize.index);
-    _storage.set(StorageType.settings, "language", DefaultSettings.language.index);
+  void _initializeDefaultSettings() {
+    _storage.set(
+      StorageType.settings,
+      "theme",
+      DefaultSettings.getSystemThemeMode().index,
+    );
+    _storage.set(StorageType.settings, "fontSize", DefaultSettings.fontSize);
+    _storage.set(
+      StorageType.settings,
+      "language",
+      DefaultSettings.language.index,
+    );
     setFavoriteTopicList(DefaultSettings.favoriteTopicList);
   }
 
@@ -40,13 +48,13 @@ class Settings {
   }
 
   // font size
-  FontSize getFonSize() {
-    int index = _storage.get(StorageType.settings, "fontSize");
-    return FontSize.values[index];
+  double getFonSize() {
+    return _storage.get(StorageType.settings, "fontSize");
   }
 
-  Future<void> setFontSize(FontSize fontSize) async {
-    await _storage.set(StorageType.settings, "fontSize", fontSize.index);
+  Future<void> setFontSize(double fontSize) async {
+    await _storage.set(StorageType.settings, "fontSize", fontSize);
+    rebuild();
   }
 
   //language
@@ -62,7 +70,10 @@ class Settings {
 
   // favorite topics
   List<Topics> getFavoriteTopicList() {
-    List<String> stringList = _storage.get(StorageType.favoriteTopics, "favoriteTopicList");
+    List<String> stringList = _storage.get(
+      StorageType.favoriteTopics,
+      "favoriteTopicList",
+    );
     List<Topics> topicList = [];
     for (String str in stringList) {
       int index = int.parse(str);
@@ -76,6 +87,10 @@ class Settings {
     for (Topics topic in topicList) {
       stringList.add(topic.index.toString());
     }
-    await _storage.set(StorageType.favoriteTopics, "favoriteTopicList", stringList);
+    await _storage.set(
+      StorageType.favoriteTopics,
+      "favoriteTopicList",
+      stringList,
+    );
   }
 }

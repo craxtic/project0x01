@@ -32,7 +32,7 @@ shown once for new users. use the config to track this.
   
 ## Task #5
 - [x] fix: the thememode toggle button does not work on the first click
-- [ ] add custom font family, style and size (next time)
+- [x] add custom font family, style and size (next time)
 - [x] refactor the code, make changes 
 
      
@@ -41,5 +41,14 @@ shown once for new users. use the config to track this.
 
 
 
-## tasks #6
+## Tasks #7
 - [x] get system theme mode and use it as default thememode, must set directly to light or dark 
+
+
+# Task #8 MainPage 
+- [x] create a top corner button that navigates a container containing 
+thememode, language, font size, change favorite topics, and about us page.
+- [x] fix: font family loading
+- [x] create buttom navigation bar (catergory, home and library)
+- [x] add dictionary 
+

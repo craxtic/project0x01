@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:project0x01/core/configs.dart';
+import 'package:project0x01/core/dictionary.dart';
 
 abstract final class AppThemes {
-  static final ThemeData light = ThemeData(
-    fontFamily: 'Poppins',
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white,
-    extensions: [],
-  );
-  static final ThemeData dark = ThemeData(
-    fontFamily: 'Poppins',
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.black87,
-    extensions: [],
-  );
+  static Future<void> loadFonts() async {
+    await Future.wait([
+       FontLoader(FontFamily.khmer).load(),
+       FontLoader(FontFamily.english).load(),
+    ]);
+  }
+
+  static ThemeData getDark(Language lang, double fontSize) {
+    return ThemeData(
+      fontFamily: lang == Language.khmer
+          ? FontFamily.khmer
+          : FontFamily.english,
+      textTheme: TextTheme(bodyMedium: TextStyle(fontSize: fontSize)),
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: Colors.black87,
+      extensions: [],
+    );
+  }
+
+  static ThemeData getLight(Language lang, double fontSize) {
+    return ThemeData(
+      fontFamily: lang == Language.khmer
+          ? FontFamily.khmer
+          : FontFamily.english,
+      textTheme: TextTheme(bodyMedium: TextStyle(fontSize: fontSize)),
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: Colors.white,
+      extensions: [],
+    );
+  }
 }
 
 // TODO: implement this

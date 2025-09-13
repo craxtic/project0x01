@@ -46,4 +46,18 @@ abstract final class Dictionary {
       Topics.numberTheory: "ទ្រឹស្តីចំនួន",
     },
   };
+
+  static const Map<Language, Map<BottomNavigationDest, String>> buttomNavigationBar = {
+    Language.english: {
+      BottomNavigationDest.category: "Category",
+      BottomNavigationDest.home: "Home",
+      BottomNavigationDest.library: "Library" 
+    },
+    Language.khmer: {
+      BottomNavigationDest.category: "សឹេរេ",
+      BottomNavigationDest.home: "ទំព័រដើម",
+      BottomNavigationDest.library: "បណ្ណា​ល័យ" 
+    },
+  };
+
 }
