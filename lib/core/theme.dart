@@ -11,24 +11,24 @@ abstract final class AppThemes {
     ]);
   }
 
-  static ThemeData getDark(Language lang, double fontSize) {
+  static ThemeData getDark(Language lang, FontSize fontSize) {
     return ThemeData(
       fontFamily: lang == Language.khmer
           ? FontFamily.khmer
           : FontFamily.english,
-      textTheme: TextTheme(bodyMedium: TextStyle(fontSize: fontSize)),
+      textTheme: TextTheme(bodyMedium: TextStyle(fontSize: fontSize.size)),
       brightness: Brightness.dark,
       scaffoldBackgroundColor: Colors.black87,
       extensions: [],
     );
   }
 
-  static ThemeData getLight(Language lang, double fontSize) {
+  static ThemeData getLight(Language lang, FontSize fontSize) {
     return ThemeData(
       fontFamily: lang == Language.khmer
           ? FontFamily.khmer
           : FontFamily.english,
-      textTheme: TextTheme(bodyMedium: TextStyle(fontSize: fontSize)),
+      textTheme: TextTheme(bodyMedium: TextStyle(fontSize: fontSize.size)),
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       extensions: [],

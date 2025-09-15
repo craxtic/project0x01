@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project0x01/core/configs.dart';
 import 'package:project0x01/core/dictionary.dart';
 import 'package:project0x01/core/theme.dart';
 import 'package:project0x01/data/local_storage.dart';
@@ -35,10 +36,10 @@ class _MainAppState extends State<MainApp> {
     super.initState();
     _toggleRebuild = false;
     _settings = Settings(widget.storage, rebuild);
-    Language lang = _settings.getLanguage();
-    double fontSize = _settings.getFonSize();
-    _dark = AppThemes.getDark(lang, fontSize);
-    _light = AppThemes.getLight(lang, fontSize);
+    // Language lang = _settings.getLanguage();
+    // FontSize fontSize = _settings.getFonSize();
+    // _dark = AppThemes.getDark(lang, fontSize);
+    // _light = AppThemes.getLight(lang, fontSize);
   }
 
   // this triggers to rebuild entire app
@@ -46,6 +47,13 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+
+    //TODO: only called this when the font style is changed
+    Language lang = _settings.getLanguage();
+    FontSize fontSize = _settings.getFonSize();
+    _dark = AppThemes.getDark(lang, fontSize);
+    _light = AppThemes.getLight(lang, fontSize);  
+
     return MaterialApp(
       title: "project0x01",
       debugShowCheckedModeBanner: false,
@@ -58,36 +66,4 @@ class _MainAppState extends State<MainApp> {
     );
   }
 
-  // TODO: reimplement this
-
-  // Future<int> setup() async {
-  //   Language lang = _settings.getLanguage();
-  //   double fontSize = _settings.getFonSize();
-  //   dark = await AppThemes.getDark(lang, fontSize);
-  //   light = await AppThemes.getLight(lang, fontSize);
-  //   return 0;
-  // }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   print("MainApp rebuild");
-  //   return FutureBuilder<int>(
-  //     future: setup(),
-  //     builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-  //       if (snapshot.hasData) {
-  //         return MaterialApp(
-  //           title: "project0x01",
-  //           debugShowCheckedModeBanner: false,
-  //           theme: light,
-  //           darkTheme: dark,
-  //           themeMode: _settings.getThemeMode(),
-  //           home: _settings.hasSeenWelcome()
-  //               ? MainPage(settings: _settings) // main page
-  //               : WelcomePageController(settings: _settings),
-  //         );
-  //       }
-  //       return Placeholder();
-  //     },
-  //   );
-  // }
 }

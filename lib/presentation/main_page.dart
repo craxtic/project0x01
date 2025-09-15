@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project0x01/core/dictionary.dart';
 import 'package:project0x01/domain/settings.dart';
 import 'package:project0x01/core/configs.dart';
+import 'package:project0x01/presentation/category_page.dart';
+import 'package:project0x01/presentation/home_page.dart';
+import 'package:project0x01/presentation/library_page.dart';
 
 class MainPage extends StatefulWidget {
   final Settings settings;
@@ -43,9 +46,9 @@ class _MainPageState extends State<MainPage> {
 
   Widget _getCurrentPage() {
     List<Widget> pages = [
-      Center(child: Text("Category")),
-      Center(child: Text("Home")),
-      Center(child: Text("Library")),
+      CategoryPage(),
+      HomePage(),
+      LibraryPage(),
     ];
 
     return pages[_currentPage.index];
@@ -56,15 +59,18 @@ class _MainPageState extends State<MainPage> {
       destinations: [
         NavigationDestination(
           icon: Icon(Icons.category),
-          label: Dictionary.buttomNavigationBar[_language]![BottomNavigationDest.category]!,
+          label: Dictionary
+              .buttomNavigationBar[_language]![BottomNavigationDest.category]!,
         ),
         NavigationDestination(
-          icon: Icon(Icons.home), 
-          label: Dictionary.buttomNavigationBar[_language]![BottomNavigationDest.home]!,
+          icon: Icon(Icons.home),
+          label: Dictionary
+              .buttomNavigationBar[_language]![BottomNavigationDest.home]!,
         ),
         NavigationDestination(
           icon: Icon(Icons.library_books),
-          label: Dictionary.buttomNavigationBar[_language]![BottomNavigationDest.library]!,
+          label: Dictionary
+              .buttomNavigationBar[_language]![BottomNavigationDest.library]!,
         ),
       ],
       selectedIndex: _currentPage.index,
@@ -108,7 +114,7 @@ class _MainPageState extends State<MainPage> {
   MenuItemButton _aboutUsMenuButton() {
     return MenuItemButton(
       onPressed: () => print("about us"),
-      child: Text("about us"),
+      child: Text(Dictionary.topCornerMenu[_language]!["aboutus"]!),
     );
   }
 
@@ -117,18 +123,18 @@ class _MainPageState extends State<MainPage> {
       menuChildren: [
         MenuItemButton(
           onPressed: () => widget.settings.setFontSize(FontSize.small),
-          child: Text("small"),
+          child: Text(Dictionary.topCornerMenu[_language]!["small"]!),
         ),
         MenuItemButton(
           onPressed: () => widget.settings.setFontSize(FontSize.medium),
-          child: Text("meduim"),
+          child: Text(Dictionary.topCornerMenu[_language]!["medium"]!),
         ),
         MenuItemButton(
           onPressed: () => widget.settings.setFontSize(FontSize.large),
-          child: Text("large"),
+          child: Text(Dictionary.topCornerMenu[_language]!["large"]!),
         ),
       ],
-      child: Text("font size"),
+      child: Text(Dictionary.topCornerMenu[_language]!["fontsize"]!),
     );
   }
 
@@ -142,7 +148,9 @@ class _MainPageState extends State<MainPage> {
       },
       child: Row(
         children: [
-          Text(_language.name),
+          _language == Language.khmer
+              ? Text(Dictionary.topCornerMenu[_language]!["khmer"]!)
+              : Text(Dictionary.topCornerMenu[_language]!["english"]!),
           const Spacer(),
           _language == Language.khmer
               ? Icon(Icons.temple_buddhist)
@@ -162,7 +170,9 @@ class _MainPageState extends State<MainPage> {
       },
       child: Row(
         children: [
-          Text(_themeMode.name),
+          _themeMode == ThemeMode.dark
+              ? Text(Dictionary.topCornerMenu[_language]!["dark"]!)
+              : Text(Dictionary.topCornerMenu[_language]!["light"]!),
           const Spacer(),
           _themeMode == ThemeMode.dark
               ? Icon(Icons.dark_mode)

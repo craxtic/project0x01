@@ -17,12 +17,21 @@ enum BottomNavigationDest{
   library
 }
 
+enum FontSize {
 
-abstract final class FontSize {
-  static const double small = 12;
-  static const double medium = 14;
-  static const double large = 16;
+  small(12),
+  medium(14),
+  large(16);
+
+  final double size;
+  const FontSize(this.size);
 }
+
+// abstract final class FontSize {
+//   static const double small = 12;
+//   static const double medium = 14;
+//   static const double large = 16;
+// }
 
 abstract final class FontFamily {
   static String khmer = "KhmerMuol";
@@ -37,6 +46,6 @@ abstract final class DefaultSettings {
   }
 
   static const Language language = Language.khmer;
-  static const double fontSize = FontSize.medium;
+  static const FontSize fontSize = FontSize.medium;
   static const List<Topics> favoriteTopicList = [Topics.none];
 }

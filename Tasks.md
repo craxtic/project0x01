@@ -40,7 +40,6 @@ shown once for new users. use the config to track this.
 - [x] switch from SharedPreferences to Hive (a better one)
 
 
-
 ## Tasks #7
 - [x] get system theme mode and use it as default thememode, must set directly to light or dark 
 
@@ -48,7 +47,21 @@ shown once for new users. use the config to track this.
 # Task #8 MainPage 
 - [x] create a top corner button that navigates a container containing 
 thememode, language, font size, change favorite topics, and about us page.
-- [x] fix: font family loading
 - [x] create buttom navigation bar (catergory, home and library)
 - [x] add dictionary 
 
+# Task #9 
+- [ ] implement Settings members (langauge, theme, font, ...) this is better approach
+- [ ] make the topics dynamic (can be updated remotely from the server)
+- [ ] fix: font family loading
+
+
+# Task #10 clean up the project
+- [ ] about us page
+# Task #11 Category page
+# Task #12 Home page
+# Task #13 Library page
+# Task #14 Contribution page (top right corner)
+# Task #15 Design the UX/UI of the app. 
+
+# Task #16 Fasitfy + PostgreSQL (create another git repo)

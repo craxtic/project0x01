@@ -60,4 +60,29 @@ abstract final class Dictionary {
     },
   };
 
+  static const Map<Language, Map<String, String>> topCornerMenu = {
+    Language.english:{
+      "dark": "Dark",
+      "light": "Light",
+      "khmer": "Khmer",
+      "english": "English",
+      "fontsize": "Font Size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "aboutus": "About Us"
+    },
+    Language.khmer: {
+      "dark": "ពណ៌ខ្មៅ",
+      "light": "ពណ៌ស", // lol
+      "khmer": "ភាសាខ្មែរ",
+      "english": "ភាសាអង់គ្លេស",
+      "fontsize": "ទំហំអក្សរ",
+      "small": "តូច",
+      "medium": "មធ្យម",
+      "large": "ធំ",
+      "aboutus": "អំពីពួកយើង"
+    }
+  }; 
+
 }

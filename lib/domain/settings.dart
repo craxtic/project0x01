@@ -17,7 +17,11 @@ class Settings {
       "theme",
       DefaultSettings.getSystemThemeMode().index,
     );
-    _storage.set(StorageType.settings, "fontSize", DefaultSettings.fontSize);
+    _storage.set(
+      StorageType.settings,
+      "fontSize",
+      DefaultSettings.fontSize.index,
+    );
     _storage.set(
       StorageType.settings,
       "language",
@@ -48,12 +52,13 @@ class Settings {
   }
 
   // font size
-  double getFonSize() {
-    return _storage.get(StorageType.settings, "fontSize");
+  FontSize getFonSize() {
+    int index = _storage.get(StorageType.settings, "fontSize");
+    return FontSize.values[index];
   }
 
-  Future<void> setFontSize(double fontSize) async {
-    await _storage.set(StorageType.settings, "fontSize", fontSize);
+  Future<void> setFontSize(FontSize fontSize) async {
+    await _storage.set(StorageType.settings, "fontSize", fontSize.index);
     rebuild();
   }
 
